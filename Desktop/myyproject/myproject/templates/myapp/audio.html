@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Audio</title>
+    <header>audio</header>
+    <main>
+        <ul>
+            <li>
+                <!-- <form method="post" enctype="multipart/form-data">
+                    <input type="file" name="audio" accept="image/*" capture="microphone" id="recorder">
+                    <input type="submit">
+                </form>   
+                <audio id="player" controls></audio>    -->
+                <div>
+                    <button id='start'>start</button>
+                    <button id='stop'>stop</button>
+                    <a href="" id='download'>download</a>
+        
+                </div>
+            </li>
+            <li>
+                Image
+            </li>
+            <li></li>
+        </ul>
+        
+    </main>
+</head>
+<body>
+    
+</body>
+<script>
+//   var recorder = document.getElementById('recorder');
+//   var player = document.getElementById('player');
+
+//   recorder.addEventListener('change', function(e) {
+//     var file = e.target.files[0];
+//     // Do something with the audio file.
+//     player.src =  URL.createObjectURL(file);
+//   });
+
+
+  
+
+</script>
+<script src="{% static 'js/audio.js' %}"></script>
+</html>

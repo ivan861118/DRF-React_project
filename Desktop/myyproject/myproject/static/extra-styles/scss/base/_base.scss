@@ -1,0 +1,51 @@
+*,
+*::after,
+*::before{
+    margin : 0 ;
+    padding :0; 
+    box-sizing:inherit; // force every element in <body> to border box
+}
+
+html{
+    font-size:62.5%; //1rem => 16*0.625 = 10(px)
+
+    @include respond(big-desktop) {//>1800px
+        font-size:75%;
+    }
+
+    @include respond(tab-land) {//width <1200
+        font-size:56.25%;
+    }
+
+
+    @include respond(tab-port) {//width <900
+        font-size:50%;
+    }
+    
+    @include respond(phone) {
+        font-size:50%;
+    }
+
+   
+
+
+}
+
+body {
+    font-family:"Lato" , sans-serif;
+    font-weight:400;
+    font-size:16px;
+    line-height:1.7;
+    color:grey;
+    padding:30px; /*is not inherited */
+    box-sizing: border-box;
+    
+
+        
+    @include respond(tab-port) {
+        padding:0;
+    }
+
+
+
+}

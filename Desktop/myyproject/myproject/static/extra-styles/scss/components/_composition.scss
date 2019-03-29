@@ -1,0 +1,45 @@
+.composition{
+    position:relative;
+
+
+    &_photo{
+        width:60%;//important!!
+        box-shadow: 0 1rem 3rem rgba(black, .4);
+        position: absolute;
+        z-index: 10; //important!
+        transition: all .2s;
+        
+        &:hover{
+            transform:scale(1.2) translateY(2px);
+            
+        }
+
+        &--p1{
+            left:0;
+            top:-2px;  
+        }
+
+        &--p2{
+            right:2rem;
+            top:2rem;
+            
+        }
+
+        &--p3{
+            right:9rem;
+            top:12rem;
+
+            @include respond(phone) {
+            right:6rem;
+            top:8rem;
+            }
+      
+        }
+    }
+    &:hover &_photo:not(:hover){
+        transform: scale(.9);
+    }
+
+    
+
+}

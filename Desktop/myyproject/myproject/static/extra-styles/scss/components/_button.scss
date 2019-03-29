@@ -1,0 +1,65 @@
+.btn {
+
+    &:link,
+    &:visited{
+    font-size: 1.5rem;
+    /* position: absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%); */ 
+    text-transform: uppercase;
+    text-decoration: none; 
+    padding: 1.5rem 5rem;
+    border-radius: 10rem;
+    display:inline-block; /* Cool */
+    margin:4rem;
+    letter-spacing: .5rem;
+    transition: all 0.2s; 
+    }
+
+    &:hover{
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    &:active{
+        transform: translateY(-1px);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);            
+    }
+
+    &-white {
+        background-color: #fff;
+        
+        color:grey;
+    }
+
+}
+.btn-text{
+    // text-decoration: none;
+    
+    
+    &:link,
+    &:visited{
+        color:$color-primary;
+        display: inline-block;
+        text-decoration: none;
+        border-bottom:1px solid $color-primary;
+        padding: 3px;
+        font-size: 1.6rem;
+        transition: all .2s;
+
+    }
+
+    &:hover{
+        color:white;
+        background-color: $color-primary;
+        box-shadow:0 1rem 2.5rem rgba(black , .5); //Play with it!!
+        transform: translateY(-3px);
+    }
+
+    &:active{
+        box-shadow:0 .5rem 1rem rgba(black , .5); //Play with it!!
+        transform: translateY(0px);
+
+    }
+}
