@@ -26,6 +26,8 @@ SECRET_KEY = 'ps#t_=5yymc-3=q!z6t*7w08*zx3wehhi#23=wlpy-$0gun&(x'
 DEBUG = True
 
 ALLOWED_HOSTS = []
+CORS_ORIGIN_ALLOW_ALL = True
+
 
 
 # Application definition
@@ -38,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # 'myapp.apps.MyappConfig',
+    'corsheaders',
+    'webpack_loader', #for react reload 
     'sass_processor',
     'rest_framework',
     'myapp',
