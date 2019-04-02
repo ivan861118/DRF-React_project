@@ -23,11 +23,11 @@ class TodoItem extends React.Component{
     // }
 
     render(){
-        const {id,title,completed,onDeleteItem} = this.props;
+        const {id,title,completed,onChange,onDeleteItem} = this.props;
       return (
         <div>
             <div>
-            <input type="checkbox" checked={completed} onChange={toggleCheck}/>
+            <input type="checkbox" checked={completed} onChange={()=>onChange(id,completed)}/>
             <span>{title}</span>
             <button className="btn btn-edit"></button>
             <button className="btn btn-delete" onClick={()=>onDeleteItem(id)}>x</button>

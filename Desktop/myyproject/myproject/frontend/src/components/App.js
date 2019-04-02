@@ -15,6 +15,7 @@ import PropTypes from "prop-types";
 import TodoHeader from "./TodoHeader";
 import InputField from "./InputField";
 import TodoList from "./TodoList";
+import Footer from "./Footer";
 
 /*
 功能：
@@ -54,6 +55,15 @@ class TodoApp extends React.Component{
     });
   };
 
+  toggleItemCompleted = (id,completed)=>{
+    let {todos} = this.state;
+    const idx = todos.findIndex(todo=>todo.id==id);
+    todos[idx].completed = !completed;
+
+    this.setState({
+      todos:todos
+    })
+  }
   handleDeleteItem=(id)=>{
     let {todos} = this.state;
     todos = todos.filter(todos => todos.id != id );
@@ -64,10 +74,8 @@ class TodoApp extends React.Component{
 
 
   render(){
-    // const {input,list} = this.state.list;
     const {todos} = this.state;
    
-    
     return (
       <div>
         <TodoHeader />
@@ -76,7 +84,11 @@ class TodoApp extends React.Component{
         />
         <TodoList 
           todos={todos}
+          onItemChecked={this.toggleItemCompleted}
           onDeleteItem={this.handleDeleteItem}
+        />
+        <Footer
+          todos={todos}
         />
       </div>
     );

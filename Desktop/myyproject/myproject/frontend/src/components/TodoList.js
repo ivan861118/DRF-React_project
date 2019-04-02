@@ -11,13 +11,14 @@ class TodoList extends React.Component{
     // }
 
     render() {
-        const  {todos,onDeleteItem}= this.props;
+        const  {todos,onItemChecked,onDeleteItem}= this.props;
         const todoElements = todos.map((todo)=>(///要用小括號！！！
             <li key={todo.id}>
             <TodoItem
             id = {todo.id}
             title={todo.title}
             completed={todo.completed}
+            onChange={(id,completed)=>onItemChecked(id,completed)}
             onDeleteItem={(id)=>onDeleteItem(id)}
             />
             </li>
