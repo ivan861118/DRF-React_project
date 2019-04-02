@@ -18,8 +18,8 @@ import TodoList from "./TodoList";
 
 /*
 功能：
-新增 todo
-刪除 todo
+新增 todo(v)
+刪除 todo(v)
 把 todo 標記為已完成 / 未完成
 修改 todo 內容
 過濾已完成 / 未完成的 todos
@@ -33,6 +33,7 @@ class TodoApp extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
+      input:'',
       todos:[
         {id: 0,title:'item1' ,completed:false},
         {id: 1              ,completed:false},
@@ -41,12 +42,17 @@ class TodoApp extends React.Component{
     };
   }
 
-  handleAddList=()=>{
-   
-  }
-
-  handleAddItem=()=>{
-  }
+  handleCreateTodos = (title) => {
+    let {todos} = this.state;
+    todos.push({
+      id:(todos.length==0) ? 0 : todos[todos.length-1].id+1,
+      title:title,
+      completed:false
+      });
+    this.setState({
+      todos:todos
+    });
+  };
 
   handleDeleteItem=(id)=>{
     let {todos} = this.state;
@@ -66,7 +72,7 @@ class TodoApp extends React.Component{
       <div>
         <TodoHeader />
         <InputField 
-          // onAddList={this.handleAddList}
+          onSubmitEditing = {this.handleCreateTodos}
         />
         <TodoList 
           todos={todos}
