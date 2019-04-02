@@ -11,6 +11,7 @@
 
 import React from "react";
 import ReactDOM from "react-dom";
+import PropTypes from "prop-types";
 import TodoHeader from "./TodoHeader";
 import InputField from "./InputField";
 import TodoList from "./TodoList";
@@ -29,13 +30,48 @@ Optional：RWD、測試
 
 
 class TodoApp extends React.Component{
+  constructor(props) {
+    super(props);
+    this.state = {
+      todos:[
+        {id: 0,title:'item1' ,completed:false},
+        {id: 1              ,completed:false},
+        {id: 2,title:'item3' ,completed:true}
+      ]
+    };
+  }
+
+  handleAddList=()=>{
+   
+  }
+
+  handleAddItem=()=>{
+  }
+
+  handleDeleteItem=(id)=>{
+    let {todos} = this.state;
+    todos = todos.filter(todos => todos.id != id );
+    this.setState( {todos:todos} );
+  }
+
+
+
 
   render(){
+    // const {input,list} = this.state.list;
+    const {todos} = this.state;
+   
+    
     return (
       <div>
         <TodoHeader />
-        <InputField />
-        <TodoList />
+        <InputField 
+          // onAddList={this.handleAddList}
+        />
+        <TodoList 
+          todos={todos}
+          onDeleteItem={this.handleDeleteItem}
+        />
       </div>
     );
   }
