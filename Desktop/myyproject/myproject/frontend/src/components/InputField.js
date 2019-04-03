@@ -4,6 +4,12 @@ import PropTypes from "prop-types";
 import { dirname } from "path";
 
 class InputField extends React.Component{
+    constructor(props) {
+        super(props);
+        this.state = {value: ''};
+
+      }
+    
 
     handleKeyDown=(e)=>{
         const {onSubmitEditing} = this.props;
@@ -15,10 +21,15 @@ class InputField extends React.Component{
                 onSubmitEditing(value);
               }
               // 3. 將輸入框資料清空
-              e.target.value = '';
+              this.setState({ value: '' });
               break;
           }
     }
+
+    handleChange=(e)=>{
+        this.setState({value: e.target.value});
+    }
+      
     render() {
         // 將 title 和 completed 依序傳遞給 TodoItem；
         // 傳遞參數的方式，就如同定義 HTML 元素的屬性
@@ -26,6 +37,8 @@ class InputField extends React.Component{
             <div>
                 <input 
                     placeholder = "新增待辦清單"
+                    value={this.state.value}
+                    onChange={this.handleChange}
                     onKeyDown={this.handleKeyDown}
                 />
             </div>

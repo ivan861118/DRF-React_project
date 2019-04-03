@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
 
+
 class Footer extends React.Component{
 
     render() {
@@ -14,10 +15,10 @@ class Footer extends React.Component{
         return (
             <div>
                 <span>
-                Todos : <span> {todoNum} </span>
+                未完成 : <span> {todoNum} </span>
                 </span>
                 <span>
-                Done : <span> {doneNum} </span>
+                已完成 : <span> {doneNum} </span>
                 </span>
             </div>
         );
