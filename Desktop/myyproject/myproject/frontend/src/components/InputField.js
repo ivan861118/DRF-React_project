@@ -6,8 +6,7 @@ import { dirname } from "path";
 class InputField extends React.Component{
     constructor(props) {
         super(props);
-        this.state = {value: ''};
-
+        this.state = {value:props.value || ''};
       }
     
 
@@ -31,12 +30,13 @@ class InputField extends React.Component{
     }
       
     render() {
+        const {placeholder} = this.props;
         // 將 title 和 completed 依序傳遞給 TodoItem；
         // 傳遞參數的方式，就如同定義 HTML 元素的屬性
         return (
             <div>
                 <input 
-                    placeholder = "新增待辦清單"
+                    placeholder = {placeholder}
                     value={this.state.value}
                     onChange={this.handleChange}
                     onKeyDown={this.handleKeyDown}

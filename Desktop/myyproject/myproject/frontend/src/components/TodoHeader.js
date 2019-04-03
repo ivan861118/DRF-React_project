@@ -7,7 +7,7 @@ class TodoHeader extends React.Component{
     render() {
         return (
             <div>
-                Todo List
+                My Todo List
             </div>
         );
     }

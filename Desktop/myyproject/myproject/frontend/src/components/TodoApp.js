@@ -72,7 +72,13 @@ class TodoApp extends React.Component{
     let {todos} = this.state;
     const idx = todos.findIndex(todo=>todo.id==id);
     todos[idx].completed = !completed;
+    this.setState( {todos:todos} );
+  }
 
+  handleEditItem = (id,value) =>{
+    let {todos} = this.state;
+    const idx = todos.findIndex(todo=>todo.id==id);
+    todos[idx].title = value;
     this.setState( {todos:todos} );
   }
   handleDeleteItem=(id)=>{
@@ -86,12 +92,14 @@ class TodoApp extends React.Component{
     return loaded ? 
       <div>
         <TodoHeader />
-        <InputField 
+        <InputField
+          placeholder = "新增待辦清單..." 
           onSubmitEditing = {this.handleCreateTodos}
         />
         <TodoList 
           todos={todos}
           onItemChecked={this.toggleItemCompleted}
+          onEditItem={this.handleEditItem}
           onDeleteItem={this.handleDeleteItem}
         />
         <Footer
