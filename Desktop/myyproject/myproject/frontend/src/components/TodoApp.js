@@ -23,8 +23,8 @@ import Footer from "./Footer";
 功能：
 新增 todo(v)
 刪除 todo(v)
-把 todo 標記為已完成 / 未完成
-修改 todo 內容
+把 todo 標記為已完成 / 未完成 (v)
+修改 todo 內容 (v)
 過濾已完成 / 未完成的 todos
 清除已完成的 todos
 Optional：RWD、測試
@@ -90,7 +90,8 @@ class TodoApp extends React.Component{
   render(){
     const {todos,loaded,placeholder} = this.state;
     return loaded ? 
-      <div>
+      <div className='todo-app__root'>
+        <div className='todo-app_main'>
         <TodoHeader />
         <InputField
           placeholder = "新增待辦清單..." 
@@ -105,6 +106,7 @@ class TodoApp extends React.Component{
         <Footer
           todos={todos}
         />
+        </div>
       </div> :
       <p>{placeholder}</p>;
     

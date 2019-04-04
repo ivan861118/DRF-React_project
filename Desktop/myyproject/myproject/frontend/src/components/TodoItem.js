@@ -26,19 +26,23 @@ class TodoItem extends React.Component{
       
     toggleEditMode=()=>{
         this.setState({ editable: !this.state.editable });
+        
     }
 
     render(){
         const {id,title,completed,onEditItem,onItemChecked,onDeleteItem} = this.props;
         const {editable} = this.state; 
       return (
-        <div>
-            <div>
-            <input 
+        <li className='todo-app__item' key={id}>
+            <div className='todo-app__checkbox'>
+            <input
+                id={id} 
                 type="checkbox" 
                 checked={completed}
                 onChange={()=>onItemChecked(id,completed)}
-                />
+            />
+            <label for={id}></label>
+            </div>
             {editable ? (
              <input
                 autoFocus
@@ -52,13 +56,16 @@ class TodoItem extends React.Component{
                 onChange={(e)=>onEditItem(id,e.target.value,)}
              />
             ):(
-            <span onDoubleClick={this.toggleEditMode}
-            >{title}</span>
+            
+            <h1 
+                className={completed?'todo-app__item-detail-x':'todo-app__item-detail'}
+                onDoubleClick={this.toggleEditMode}>
+            {title}
+            </h1>
 
             )}
-            <button className="btn btn-delete" onClick={()=>onDeleteItem(id)}>x</button>
-            </div>
-        </div>
+            <button className="todo-app__item-x" onClick={()=>onDeleteItem(id)}>X</button>
+        </li>
       );
     }
 }

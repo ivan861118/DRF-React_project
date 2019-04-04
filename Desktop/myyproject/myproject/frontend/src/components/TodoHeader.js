@@ -6,8 +6,8 @@ class TodoHeader extends React.Component{
 
     render() {
         return (
-            <div>
-                My Todo List
+            <div className='todo-app__header'>
+                <span className='todo-app__title'>My Todo List</span>
             </div>
         );
     }

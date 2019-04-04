@@ -35,7 +35,8 @@ class InputField extends React.Component{
         // 傳遞參數的方式，就如同定義 HTML 元素的屬性
         return (
             <div>
-                <input 
+                <input
+                    className='todo-app__input' 
                     placeholder = {placeholder}
                     value={this.state.value}
                     onChange={this.handleChange}

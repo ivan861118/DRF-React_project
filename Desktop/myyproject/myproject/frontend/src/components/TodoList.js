@@ -13,7 +13,6 @@ class TodoList extends React.Component{
     render() {
         const  {todos,onItemChecked,onEditItem,onDeleteItem}= this.props;
         const todoElements = todos.map((todo)=>(///要用小括號！！！
-            <li key={todo.id}>
             <TodoItem
             id = {todo.id}
             title={todo.title}
@@ -22,12 +21,13 @@ class TodoList extends React.Component{
             onEditItem={(id,value)=>onEditItem(id,value)}
             onDeleteItem={(id)=>onDeleteItem(id)}
             />
-            </li>
         ));
         // 將 title 和 completed 依序傳遞給 TodoItem；
         // 傳遞參數的方式，就如同定義 HTML 元素的屬性
         return (
-            <ul>{todoElements}</ul>
+            <ul className='todo-app__list' >
+            {todoElements}
+            </ul>
         );
     }
 }
