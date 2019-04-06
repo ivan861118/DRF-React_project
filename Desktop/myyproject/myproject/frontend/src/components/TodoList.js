@@ -6,13 +6,24 @@ import TodoItem from "./TodoItem";
 class TodoList extends React.Component{
 
 
-    // handleDeleteItem=(id)=>{
-    //     this.props.onDeleteItem(id);    
-    // }
+    handleShowItem=(todos,show)=>{
+        switch(show){
+            case "all":
+                break
+            case "active":
+                todos = todos.filter(todo=>todo.completed == false);
+                break
+            case "completed":
+                todos = todos.filter(todo=>todo.completed == true);
+                break
+        }
+        return todos;
+    }
 
     render() {
-        const  {todos,onItemChecked,onEditItem,onDeleteItem}= this.props;
-        const todoElements = todos.map((todo)=>(///要用小括號！！！
+        const  {todos,show,onItemChecked,onEditItem,onDeleteItem}= this.props;
+        const showElementsObj = this.handleShowItem(todos,show); //Object Array
+        const showElements = showElementsObj.map((todo)=>(///要用小括號！！！
             <TodoItem
             id = {todo.id}
             title={todo.title}
@@ -22,11 +33,13 @@ class TodoList extends React.Component{
             onDeleteItem={(id)=>onDeleteItem(id)}
             />
         ));
+        
+        
         // 將 title 和 completed 依序傳遞給 TodoItem；
         // 傳遞參數的方式，就如同定義 HTML 元素的屬性
         return (
             <ul className='todo-app__list' >
-            {todoElements}
+            {showElements}
             </ul>
         );
     }

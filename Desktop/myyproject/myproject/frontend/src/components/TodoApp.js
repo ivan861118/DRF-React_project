@@ -38,7 +38,8 @@ class TodoApp extends React.Component{
     this.state = {
       todos:[],
       loaded: false,
-      placeholder: "Loading..."
+      placeholder: "Loading...",
+      show:'all',
     };
   }
   static propTypes = {
@@ -87,8 +88,10 @@ class TodoApp extends React.Component{
     this.setState( {todos:todos} );
   }
 
+
+
   render(){
-    const {todos,loaded,placeholder} = this.state;
+    const {todos,loaded,placeholder,show} = this.state;
     return loaded ? 
       <div className='todo-app__root'>
         <div className='todo-app_main'>
@@ -99,12 +102,14 @@ class TodoApp extends React.Component{
         />
         <TodoList 
           todos={todos}
+          show={show}
           onItemChecked={this.toggleItemCompleted}
           onEditItem={this.handleEditItem}
           onDeleteItem={this.handleDeleteItem}
         />
         <Footer
           todos={todos}
+          onToggleShow={(show_type)=>this.setState({show:show_type})}
         />
         </div>
       </div> :
