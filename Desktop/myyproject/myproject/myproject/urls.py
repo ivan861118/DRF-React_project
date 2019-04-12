@@ -20,12 +20,14 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.urls import include, path
-from myapp import views
+
+from rest_framework.routers import DefaultRouter
+from todoapp.views import TodoAppViewSet
 
 
 
-# router = DefaultRouter()
-# router.register(r'music', views.MusicViewSet)
+router = DefaultRouter()
+router.register(r'todoapp', TodoAppViewSet)
 
 # router = DefaultRouter()
 # router.register('api/', views.LeadListCreate)
@@ -36,8 +38,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # path('',views.index),
     path('', include('myapp.urls')),
+    path('', include('todoapp.urls')),
     path('', include('frontend.urls')),
-    # path('api/', include(router.urls))
+    path('api/', include(router.urls))
 ]
 
 # urlpatterns += [

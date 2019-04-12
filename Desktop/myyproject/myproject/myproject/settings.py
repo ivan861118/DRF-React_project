@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'sass_processor',
     'rest_framework',
     'myapp',
+    'todoapp',
     'frontend',
 ]
 

@@ -19,6 +19,7 @@ import Footer from "./Footer";
 
 
 
+
 /*
 功能：
 新增 todo(v)
@@ -57,16 +58,17 @@ class TodoApp extends React.Component{
       .then(todos => this.setState({ todos: todos, loaded: true }));
   }
 
-
-
   handleCreateTodos = (title) => {
     let {todos} = this.state;
-    todos.push({
+    const newTodo = {
       id:(todos.length==0) ? 0 : todos[todos.length-1].id+1,
       title:title,
       completed:false
-      });
+      };
+
+    todos.push(newTodo);
     this.setState({todos:todos});
+    this.handleHttpRequest(newTodo,"POST");
   };
 
   toggleItemCompleted = (id,completed)=>{
@@ -82,10 +84,34 @@ class TodoApp extends React.Component{
     todos[idx].title = value;
     this.setState( {todos:todos} );
   }
+
   handleDeleteItem=(id)=>{
     let {todos} = this.state;
+    const deleteTodo = todos.find(todos => todos.id == id ); // filter returns an array, 
     todos = todos.filter(todos => todos.id != id );
     this.setState( {todos:todos} );
+    this.handleHttpRequest(deleteTodo,"DELETE");
+  }
+
+  handleHttpRequest=(obj,requestType)=>{
+    let url = "api/todoapp/"; //要加上back slash, 不能用const
+    const options = {
+      method:requestType,
+      headers:{'Content-Type': 'application/json'}
+    }
+
+    if(requestType == "POST" || requestType == "PUT"){
+      options.body =JSON.stringify(obj);
+    }else if(requestType == "DELETE" || requestType == "PUT"){
+      console.log("hiiiii");
+      url = url+(obj.id).toString()+"/";
+    }
+
+    fetch(new Request(url,options))
+    .then(res=>{
+        console.log(res.status);
+      })
+  
   }
 
 
