@@ -76,6 +76,10 @@ class TodoApp extends React.Component{
     const idx = todos.findIndex(todo=>todo.id==id);
     todos[idx].completed = !completed;
     this.setState( {todos:todos} );
+
+    //HTTP Request
+    const newTodo = todos[idx];
+    // this.handleHttpRequest(newTodo,"PUT");
   }
 
   handleEditItem = (id,value) =>{
@@ -83,6 +87,10 @@ class TodoApp extends React.Component{
     const idx = todos.findIndex(todo=>todo.id==id);
     todos[idx].title = value;
     this.setState( {todos:todos} );
+
+    //HTTP Request
+    const newTodo = todos[idx];
+    // this.handleHttpRequest(newTodo,"PUT");
   }
 
   handleDeleteItem=(id)=>{
@@ -100,11 +108,14 @@ class TodoApp extends React.Component{
       headers:{'Content-Type': 'application/json'}
     }
 
-    if(requestType == "POST" || requestType == "PUT"){
+    if(requestType == "POST"){
       options.body =JSON.stringify(obj);
-    }else if(requestType == "DELETE" || requestType == "PUT"){
-      console.log("hiiiii");
+    }else if(requestType == "DELETE"){
       url = url+(obj.id).toString()+"/";
+    }else{ //PUT
+      // options.body =JSON.stringify(obj);
+      // url = url+(obj.id).toString()+"/";
+
     }
 
     fetch(new Request(url,options))
